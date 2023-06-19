@@ -7,3 +7,4 @@ public class DetectWhenPlayerDies : MonoBehaviour
 {
     public Action OnDie;
 }
+

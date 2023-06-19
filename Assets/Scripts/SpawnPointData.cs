@@ -6,4 +6,5 @@ using UnityEngine;
 public class SpawnPointData : ScriptableObject
 {
     public Vector2 CurrentSpawnPosition;
+    public GameObject Player;
 }

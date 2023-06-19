@@ -12,13 +12,13 @@ public class PlayerJumpController : MonoBehaviour
     [SerializeField] float lowJumpMultiplier = 2f;
     [SerializeField] float jumpBufferTime = 0.2f;
     [SerializeField] float coyoteTime = 0.2f;
-
     [SerializeField] LayerMask groundLayer;
     private Rigidbody2D body2D;
     private float coyoteTimer = 0f;
-    private float boxOffset = 0.5f;
-    private float boxSize = 1f;
+    private float boxOffset = 0.6f;
+    private float boxSize = 0.5f;
     private float jumpBufferTimer = 0;
+    
 
     public event Action OnPlayerJump;
     private void Awake()
@@ -42,7 +42,7 @@ public class PlayerJumpController : MonoBehaviour
         }
         if (coyoteTimer > 0 && jumpBufferTimer > 0)
         {
-            body2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            body2D.velocity = new Vector2(body2D.velocity.x, jumpForce);
             jumpBufferTimer = 0;
             coyoteTimer = 0;
             OnPlayerJump?.Invoke();
@@ -82,6 +82,6 @@ public class PlayerJumpController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position + Vector3.down * boxOffset, new Vector2(1, 0.1f) * boxSize);
+        Gizmos.DrawWireCube(transform.position + Vector3.down * boxOffset, new Vector2(1, 0.2f) * boxSize);
     }
 }

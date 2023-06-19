@@ -14,6 +14,7 @@ public class PlayerAnimationController : MonoBehaviour
     DetectWhenPlayerDies detectWhenPlayerDies;
     PlayerJumpController jumpController;
     PlayerRunController runController;
+    AudioSource audioSourceJump;
     private float lerpTime;
     const string IS_JUMPING = "IsJumping";
     const string DIE = "Die";
@@ -24,6 +25,7 @@ public class PlayerAnimationController : MonoBehaviour
         rigidbody2d = GetComponentInParent<Rigidbody2D>();
         jumpController = GetComponentInParent<PlayerJumpController>();
         runController = GetComponentInParent<PlayerRunController>();
+        audioSourceJump = GetComponent<AudioSource>();
         detectWhenPlayerDies = GetComponentInParent<DetectWhenPlayerDies>();
         detectWhenPlayerDies.OnDie += TriggerDieAnimation;
         jumpController.OnPlayerJump += TriggerJumpAnimation;
@@ -48,14 +50,13 @@ public class PlayerAnimationController : MonoBehaviour
     }
     void TriggerJumpAnimation()
     {
+        audioSourceJump.Play();
         animator.SetBool(IS_JUMPING, true);
     }
     void InclinatePlayer(float horizontalMovement)
     {
         if (rigidbody2d.velocity.y > 0) return;
-        if (rigidbody2d.velocity == Vector2.zero) ;
         lerpTime = (horizontalMovement != 0) ? lerpTime + Time.deltaTime : 0;
-        Debug.Log(lerpTime);
         transform.rotation = Quaternion.Lerp(Quaternion.identity, Quaternion.AngleAxis(horizontalMovement * 45, Vector3.forward), lerpTime);
     }
     private void SpawnSouls()

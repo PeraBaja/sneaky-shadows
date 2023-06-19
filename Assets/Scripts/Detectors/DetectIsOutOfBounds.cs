@@ -17,7 +17,7 @@ public class DetectIsOutOfBounds : MonoBehaviour
         if(Mathf.Abs(transform.position.y) >= boundsLenght)
         {
             player.OnDie?.Invoke();
-            Destroy(gameObject);
+            Destroy(player.gameObject);
         }
     }
 }

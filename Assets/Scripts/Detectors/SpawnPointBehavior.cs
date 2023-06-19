@@ -8,10 +8,17 @@ public class SpawnPointBehavior : MonoBehaviour
     [SerializeField] SpawnPointData spawnPointData;
     [SerializeField] GameObject player;
     [SerializeField] int maxSouls;
+
+    AudioSource audioSourceRevive;
     int soulCounter = 0;
-    private async void OnTriggerEnter2D(Collider2D collider)
+
+    private void Awake()
     {
-        if (collider.gameObject.layer == player.layer) 
+        audioSourceRevive = GetComponent<AudioSource>();
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.layer == player.layer)
         {
             spawnPointData.CurrentSpawnPosition = transform.position;
         }
@@ -21,13 +28,15 @@ public class SpawnPointBehavior : MonoBehaviour
             Debug.Log("SoulCounter: " + soulCounter);
             Destroy(collider.gameObject);
         }
-
         if (soulCounter >= maxSouls)
         {
-            
-            Instantiate(player, spawnPointData.CurrentSpawnPosition, Quaternion.identity);
-            soulCounter = 0;
+            InstantiatePlayer();
         }
-
+    }    
+    void InstantiatePlayer()
+    {
+        audioSourceRevive.Play();
+        Instantiate(player, spawnPointData.CurrentSpawnPosition, Quaternion.identity);
+        soulCounter = 0;
     }
 }
