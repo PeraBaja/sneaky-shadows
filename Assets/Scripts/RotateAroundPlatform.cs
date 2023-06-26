@@ -8,21 +8,23 @@ using UnityEngine;
 public class RotateAroundPlatform : MonoBehaviour
 {
     Rigidbody2D body2D;
-    private float lerpTime = 0;
 
     void Awake()
     {
         body2D = GetComponent<Rigidbody2D>();
+        EventManager.OnPlayerActivateEasterEgg += RotateBackwardsPlatform;
     }
-    void Update()
+    void Start()
     {
         RotatePlatform();
-
     }
     void RotatePlatform()
     {
-        lerpTime += Time.deltaTime;
-        body2D.angularVelocity = Mathf.Lerp(0, -80, lerpTime);
+        body2D.angularVelocity = -80;
+    }
+    void RotateBackwardsPlatform()
+    {
+        body2D.angularVelocity = 80;
     }
 
 }

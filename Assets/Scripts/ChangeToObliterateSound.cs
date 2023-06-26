@@ -18,6 +18,5 @@ public class ChangeToObliterateSound : MonoBehaviour
         audioManager.clip = obliterateAudio;
         audioManager.loop = false;
         audioManager.Play();
-
     }
 }

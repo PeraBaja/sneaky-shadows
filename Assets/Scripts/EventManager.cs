@@ -6,4 +6,5 @@ public static class EventManager
 {
     public static Action<string> OnPlayerIsNewSection;
     public static Action OnObliterateMaxSoul;
+    public static Action OnPlayerActivateEasterEgg;
 }
