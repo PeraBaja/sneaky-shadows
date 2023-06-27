@@ -11,9 +11,9 @@ public class PlayerAnimationController : MonoBehaviour
 
     Animator animator;
     Rigidbody2D rigidbody2d;
-    DetectWhenPlayerDies detectWhenPlayerDies;
     PlayerJumpController jumpController;
     PlayerRunController runController;
+    DetectWhenPlayerDies detectWhenPlayerDies;
     AudioSource audioSourceJump;
     private float lerpTime;
     const string IS_JUMPING = "IsJumping";
@@ -61,10 +61,17 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void SpawnSouls()
     {
+        Debug.Log("SpawnSoulss");
         for (int i = 0; i < maxSoulsToSpawn; i++)
         {
             GameObject soulInstance = Instantiate(playerSoul, transform.position, Quaternion.identity);
             if (i == 0) soulInstance.GetComponentInChildren<CinemachineVirtualCamera>().Follow = soulInstance.transform;
         }
-    } 
+    }
+    private void OnDestroy()
+    {
+        detectWhenPlayerDies.OnDie -= TriggerDieAnimation;
+        jumpController.OnPlayerJump -= TriggerJumpAnimation;
+        runController.OnPlayerMoves -= InclinatePlayer;
+    }
 }

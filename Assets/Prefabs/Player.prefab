@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 8612696629616030209}
   - component: {fileID: 3751800958194069399}
   m_Layer: 0
-  m_Name: PlayerVisuals
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,6 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSoul: {fileID: 288951889111308964, guid: dc47d2c799d4b634ca5546a1f26661b4, type: 3}
   maxSoulsToSpawn: 5
+  detectWhenPlayerDies: {fileID: 0}
 --- !u!82 &3751800958194069399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -935,8 +936,7 @@ GameObject:
   - component: {fileID: 1177254755446981399}
   - component: {fileID: 1177254755446981393}
   - component: {fileID: 1177254755446981392}
-  - component: {fileID: 1554624532}
-  - component: {fileID: 7417128160464614522}
+  - component: {fileID: 1961735124614607857}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1039,7 +1039,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1554624532
+--- !u!114 &1961735124614607857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1051,19 +1051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d711f3b2b195b439fed57e3c2a99cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7417128160464614522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177254755446981404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19686e1d5eae24c4c823e018b45aca8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   boundsLenght: 50
+  obstacleLayer: 9
 --- !u!1 &6058096823615884104
 GameObject:
   m_ObjectHideFlags: 0

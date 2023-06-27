@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class SpawnPointBehavior : MonoBehaviour
     [SerializeField] int maxSouls;
 
     AudioSource audioSourceRevive;
+    GameObject playerInstance;
     int soulCounter = 0;
 
     private void Awake()
@@ -25,18 +27,18 @@ public class SpawnPointBehavior : MonoBehaviour
         if (collider.gameObject.TryGetComponent(out PlayerSoulBehaviour soul))
         {
             soulCounter++;
-            Debug.Log("SoulCounter: " + soulCounter);
             Destroy(collider.gameObject);
         }
         if (soulCounter >= maxSouls)
         {
+            if (playerInstance != null) return;
             InstantiatePlayer();
         }
     }    
     void InstantiatePlayer()
     {
         audioSourceRevive.Play();
-        Instantiate(player, spawnPointData.CurrentSpawnPosition, Quaternion.identity);
+        playerInstance = Instantiate(player, spawnPointData.CurrentSpawnPosition, Quaternion.identity);
         soulCounter = 0;
     }
 }
