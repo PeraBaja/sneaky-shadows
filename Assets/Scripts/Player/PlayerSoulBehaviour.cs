@@ -20,7 +20,7 @@ public class PlayerSoulBehaviour : MonoBehaviour
     {
         SparceSoul();
         await Task.Delay(1200);
-        InvokeRepeating("GoToSpawn", 0f, 1f);
+        InvokeRepeating(nameof(GoToSpawn), 0f, 1f);
     }
     void GoToSpawn()
     {

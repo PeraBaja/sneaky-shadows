@@ -27,7 +27,6 @@ public class DetectWhenPlayerDies : MonoBehaviour
     {
         if (Mathf.Abs(this.transform.position.y) >= boundsLenght)
         {
-            Debug.Log("Kill Out Of Bounds");
             Destroy(this.gameObject);
             OnDie?.Invoke();
         }

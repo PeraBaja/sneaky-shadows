@@ -75,6 +75,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1847601577
       objectReference: {fileID: 0}
+    - target: {fileID: 4579996264868465100, guid: 2f6046bdb07e35f44bb7a90ae472eb34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579996264868465102, guid: 2f6046bdb07e35f44bb7a90ae472eb34, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4579996264868465102, guid: 2f6046bdb07e35f44bb7a90ae472eb34, type: 3}
       propertyPath: m_Intensity
       value: 0
