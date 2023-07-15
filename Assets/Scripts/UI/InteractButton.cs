@@ -21,7 +21,6 @@ public class InteractButton : MonoBehaviour
     {
         if (Input.GetAxis("Vertical") > 0)
         {
-            Debug.Log("hola");
             animator.SetTrigger("Select");
             Interact();
         }

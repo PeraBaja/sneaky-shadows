@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class OpenSettingsMenu : InteractButton
 {
-    public event Action OnPlayerPulseSettingButton;
+    public event Action OnPulse;
     protected override void Interact()
     {
-        OnPlayerPulseSettingButton?.Invoke();
+        OnPulse?.Invoke();
     }
 }

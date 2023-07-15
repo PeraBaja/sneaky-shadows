@@ -19,7 +19,7 @@ public class FallingSpikesBehaviour : MonoBehaviour
 
         if (playerHit == null) return;
         particleObject.SetActive(false);
-
+        GetComponentInChildren<AudioSource>().Stop();
         body2D.gravityScale = 2f;
         Destroy(gameObject, 5f);
     }
